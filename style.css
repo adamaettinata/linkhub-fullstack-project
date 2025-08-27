@@ -1,7 +1,18 @@
+:root {
+  --primary-bg: #101b2c;
+  --container-bg: rgba(26, 38, 56, 0.5);
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --button-bg: #f0f0f0;
+  --button-text: #333;
+  --button-hover: #007bff;
+}
+
+
 body {
-    font-family: Arial, sans-serif; 
-    background-color: #101b2ce7; 
-    color: #dad5d5; 
+    font-family: 'Poppins', sans-serif; /* Contoh pakai Poppins */
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
     display: flex; 
     justify-content: center;
     align-items: center;
@@ -15,7 +26,7 @@ body {
     max-width: 600px; 
     text-align: center; 
     padding: 20px;
-    background-color: rgba(39, 3, 3, 0.178);
+    background-color: var(--container-bg);
     border-radius: 10px; 
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
 }
@@ -38,14 +49,14 @@ h1 {
 
 p {
     margin-top: 0;
-    color: #666;
+    color: var(--text-secondary);
 }
 
 
 .link-button {
     display: block; 
-    background-color: #fafafa; 
-    color: rgb(134, 134, 134); 
+    background-color: var(--button-bg);
+    color: var(--button-text);
     padding: 15px;
     margin: 10px 0; 
     text-decoration: none; 
@@ -56,7 +67,8 @@ p {
 
 
 .link-button:hover {
-    background-color: #0056b3; 
+    background-color: var(--button-hover);
+    color: white;
 }
 
 footer p {
