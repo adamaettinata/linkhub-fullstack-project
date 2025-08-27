@@ -5,10 +5,12 @@ fetch(apiUrl)
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
         }
+
         return response.json();
     })
     .then(data => {
         console.log('Data diterima dari backend:', data); 
+        buildPage(data);
     })
     .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
