@@ -73,6 +73,6 @@ p {
 
 footer p {
     margin-top: 25px;
-    color: #666;
+    color: var(--text-secondary);
     font-size: 14px;
 }

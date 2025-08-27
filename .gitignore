@@ -1,0 +1,9 @@
+# Abaikan folder dependensi Node.js
+/backend/node_modules
+
+# File environment (jika nanti kamu pakai)
+.env
+
+# File sistem operasi
+.DS_Store
+Thumbs.db
