@@ -1,66 +1,66 @@
-/* Mengatur gaya dasar untuk seluruh halaman */
 body {
-    font-family: Arial, sans-serif; /* Jenis font */
-    background-color: #101b2ce7; /* Warna latar belakang abu-abu muda */
-    color: #dad5d5; /* Warna teks utama */
-    display: flex; /* Menggunakan Flexbox untuk menengahkan konten */
+    font-family: Arial, sans-serif; 
+    background-color: #101b2ce7; 
+    color: #dad5d5; 
+    display: flex; 
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Tinggi minimal seukuran layar */
+    min-height: 100vh; 
     margin: 0;
 }
 
-/* Wadah utama */
+
 .container {
     width: 90%;
-    max-width: 600px; /* Lebar maksimal konten */
-    text-align: center; /* Semua teks di dalamnya rata tengah */
+    max-width: 600px; 
+    text-align: center; 
     padding: 20px;
     background-color: rgba(39, 3, 3, 0.178);
-    border-radius: 10px; /* Sudut melengkung */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Efek bayangan */
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
 }
 
-/* Foto profil */
+
 .profile-picture {
     width: 120px;
     height: 120px;
-    border-radius: 50%; /* Membuat gambar menjadi bulat */
-    object-fit: cover; /* Memastikan gambar tidak gepeng */
+    border-radius: 50%; 
+    object-fit: cover; 
     border: 3px solid #ddd;
 }
 
-/* Nama */
+
 h1 {
     margin-top: 10px;
     margin-bottom: 5px;
 }
 
-/* Deskripsi */
+
 p {
     margin-top: 0;
     color: #666;
 }
 
-/* Tombol tautan */
+
 .link-button {
-    display: block; /* Membuat setiap tautan berada di baris baru */
-    background-color: #fafafa; /* Warna biru */
-    color: rgb(134, 134, 134); /* Warna teks putih */
+    display: block; 
+    background-color: #fafafa; 
+    color: rgb(134, 134, 134); 
     padding: 15px;
-    margin: 10px 0; /* Jarak atas dan bawah */
-    text-decoration: none; /* Menghilangkan garis bawah */
+    margin: 10px 0; 
+    text-decoration: none; 
     border-radius: 5px;
     font-weight: bold;
-    transition: background-color 0.3s; /* Animasi saat kursor di atasnya */
+    transition: background-color 0.3s; 
 }
 
-/* Efek saat kursor di atas tombol */
+
 .link-button:hover {
-    background-color: #0056b3; /* Warna biru lebih gelap */
+    background-color: #0056b3; 
 }
 
-f1 {
-    margin-top: 20px;
+footer p {
+    margin-top: 25px;
     color: #666;
+    font-size: 14px;
 }
