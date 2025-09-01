@@ -4,6 +4,12 @@ const cors = require('cors');
 const { createClient } = require('@supabase/supabase-js'); // Import Supabase
 
 const app = express();
+
+console.log("--- MEMERIKSA KUNCI RAHASIA ---");
+console.log("SUPABASE_URL yang diterima:", process.env.SUPABASE_URL ? "ADA" : "TIDAK ADA / KOSONG");
+console.log("SUPABASE_KEY yang diterima:", process.env.SUPABASE_KEY ? "ADA" : "TIDAK ADA / KOSONG");
+console.log("---------------------------------");
+
 const PORT = process.env.PORT || 3000;
 
 // --- KONEKSI SUPABASE ---
