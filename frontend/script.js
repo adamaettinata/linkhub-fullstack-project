@@ -1,5 +1,5 @@
 const userName = "Faisal Adama";
-const apiUrl = `linkhub-fullstack-project-production.up.railway.app`;
+const apiUrl = `https://linkhub-fullstack-project-production.up.railway.app/api/user/${encodeURIComponent(userName)}`;
 
 fetch(apiUrl)
     .then(response => {
