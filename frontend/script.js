@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/api/user';
+const apiUrl = 'http://localhost:3000/api/user/Faisal Adama';
 
 fetch(apiUrl)
     .then(response => {

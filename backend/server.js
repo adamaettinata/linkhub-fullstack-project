@@ -1,33 +1,62 @@
+require('dotenv').config(); // Panggil ini paling atas
 const express = require('express');
 const cors = require('cors');
+const { createClient } = require('@supabase/supabase-js'); // Import Supabase
 
 const app = express();
-
 const PORT = 3000;
+
+// --- KONEKSI SUPABASE ---
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 app.use(cors());
 
-const userData = {
-    name: "Faisal Adama",
-    bio: "Ordinary Engineer",
-    picture: "profile_picture.png", 
-    links: [
-        { title: "GitHub", url: "https://github.com/adamaettinata" },
-        { title: "LinkedIn", url: "https://www.linkedin.com/in/faisal-adama-971a4a312/" },
-        { title: "Twitter / X", url: "https://twitter.com/adamaettinata/" },
-        { title: "Website Portofolio", url: "#" }
-    ]
-};
-
-
-app.get('/api/user', (req, res) => {
-    res.json(userData);
+// --- API ENDPOINTS ---
+app.get('/', (req, res) => {
+    res.send('<h1>Selamat datang di API LinkHub dengan Supabase!</h1>');
 });
 
-app.get('/', (req, res) => {
-    res.send('<h1>Selamat datang di API untuk LinkHub!</h1><p>Coba akses <a href="/api/user">/api/user</a> untuk melihat data.</p>');
+// Ubah endpoint untuk mengambil data dari Supabase
+app.get('/api/user/:name', async (req, res) => {
+    try {
+        const userName = req.params.name;
+
+        // 1. Ambil data profil dari tabel 'profiles'
+        const { data: profile, error: profileError } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('name', userName)
+            .single(); // .single() untuk mengambil satu baris saja
+
+        if (profileError || !profile) {
+            return res.status(404).json({ message: "User tidak ditemukan", error: profileError });
+        }
+
+        // 2. Ambil data link yang berhubungan dengan profil tersebut
+        const { data: links, error: linksError } = await supabase
+            .from('links')
+            .select('title, url')
+            .eq('profile_id', profile.id);
+
+        if (linksError) {
+            return res.status(500).json({ message: "Gagal mengambil data link", error: linksError });
+        }
+
+        // 3. Gabungkan data dan kirim sebagai respons
+        const responseData = {
+            ...profile,
+            links: links
+        };
+
+        res.json(responseData);
+
+    } catch (error) {
+        res.status(500).json({ message: "Terjadi kesalahan pada server", error });
+    }
 });
 
 app.listen(PORT, () => {
-    console.log(`✅ Server berjalan di http://localhost:${PORT}`);
+    console.log(`🚀 Server berjalan di http://localhost:${PORT}`);
 });
