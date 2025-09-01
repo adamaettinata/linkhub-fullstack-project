@@ -26,32 +26,16 @@ function buildPage(data) {
     const linksSection = document.querySelector('.links-section');
     linksSection.innerHTML = ''; 
 
-    const iconMap = {
-        'GitHub': 'github',
-        'LinkedIn': 'linkedin',
-        'Twitter / X': 'twitter',
-        'Website Portofolio': 'globe'
-    };
-
-    // HANYA SATU BLOK forEach ini yang dibutuhkan
+    // Versi sederhana TANPA ikon
     data.links.forEach(link => {
         const a = document.createElement('a');
         a.href = link.url;
         a.target = '_blank';
-        a.className = 'flex items-center justify-center gap-3 bg-secondary p-4 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20';
+        // Class yang disederhanakan untuk tombol tanpa ikon
+        a.className = 'block w-full bg-secondary p-4 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20';
+        // Langsung isi teksnya
+        a.textContent = link.title;
 
-        const iconName = iconMap[link.title] || 'link-2';
-        const iconEl = document.createElement('i');
-        iconEl.setAttribute('data-lucide', iconName);
-        
-        const textEl = document.createElement('span');
-        textEl.textContent = link.title;
-
-        a.appendChild(iconEl);
-        a.appendChild(textEl);
         linksSection.appendChild(a);
     });
-
-    // Panggil fungsi createIcons() dari Lucide setelah semua elemen ditambahkan ke DOM
-    lucide.createIcons();
 }
