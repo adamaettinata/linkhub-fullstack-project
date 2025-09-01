@@ -4,7 +4,7 @@ const cors = require('cors');
 const { createClient } = require('@supabase/supabase-js'); // Import Supabase
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // --- KONEKSI SUPABASE ---
 const supabaseUrl = process.env.SUPABASE_URL;
