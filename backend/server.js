@@ -90,6 +90,25 @@ app.get('/api/user/:name', async (req, res) => {
     }
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`🚀 Server berjalan di port ${PORT}`);
+const server = app.listen(PORT, '0.0.0.0', () => {
+    // try {
+        const addressInfo = server.address();
+        console.log(`🚀 Server berjalan di port ${PORT}`);
+        console.log(`[BUKTI] Server mendengarkan di alamat IP: ${addressInfo.address}`);
+        console.log(`[BUKTI] Port yang digunakan oleh server: ${addressInfo.port}`);
+    // } catch(err) {
+    //    console.log(err)
+    // }
+});
+
+// Tambahkan ini untuk menangkap semua error yang mungkin membuat server crash diam-diam
+process.on('uncaughtException', (error, origin) => {
+    console.error('💥 UNCAUGHT EXCEPTION:', error);
+    console.error('💥 ORIGIN:', origin);
+    process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('💥 UNHANDLED REJECTION:', reason);
+    // console.error('💥 PROMISE:', promise);
 });
