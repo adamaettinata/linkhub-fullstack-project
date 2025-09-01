@@ -19,7 +19,7 @@ fetch(apiUrl)
     });
 
 function buildPage(data) {
-    document.querySelector('.profile-picture').src = data.picture;
+    document.querySelector('#profile-img').src = data.picture;
     document.querySelector('h1').textContent = data.name;
     document.querySelector('header p').textContent = data.bio;
 
