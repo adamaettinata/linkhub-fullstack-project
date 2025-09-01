@@ -1,4 +1,4 @@
-require('dotenv').config(); // Panggil ini paling atas
+//require('dotenv').config(); // Panggil ini paling atas
 const express = require('express');
 const cors = require('cors');
 const { createClient } = require('@supabase/supabase-js'); // Import Supabase
