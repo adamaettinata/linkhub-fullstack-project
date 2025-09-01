@@ -34,38 +34,59 @@ app.get('/', (req, res) => {
 app.get('/api/user/:name', async (req, res) => {
     try {
         const userName = req.params.name;
+        console.log(`[LOG] Mencari user dengan nama: "${userName}"`);
 
         // 1. Ambil data profil dari tabel 'profiles'
+        // Gunakan .maybeSingle() untuk tes, ini lebih aman dari .single()
+        // .maybeSingle() tidak akan error jika ada duplikat, tapi akan mengembalikan baris pertama.
         const { data: profile, error: profileError } = await supabase
             .from('profiles')
             .select('*')
             .eq('name', userName)
-            .single(); // .single() untuk mengambil satu baris saja
+            .maybeSingle(); // <-- GANTI DARI .single() untuk debugging
 
-        if (profileError || !profile) {
-            return res.status(404).json({ message: "User tidak ditemukan", error: profileError });
+        // Jika ada error dari Supabase, log dan kirim respons error
+        if (profileError) {
+            console.error('[ERROR] Kesalahan saat query profil:', profileError);
+            // PostgREST error (misal: tabel tidak ditemukan) akan masuk ke sini
+            if (profileError.code === '42P01') {
+                 return res.status(500).json({ message: "Kesalahan pada server: Tabel 'profiles' tidak ditemukan. Periksa nama tabel Anda." });
+            }
+            return res.status(500).json({ message: "Gagal mengambil data profil", error: profileError });
+        }
+        
+        // Jika profil tidak ditemukan sama sekali
+        if (!profile) {
+            console.log(`[LOG] User dengan nama "${userName}" tidak ditemukan.`);
+            return res.status(404).json({ message: "User tidak ditemukan" });
         }
 
-        // 2. Ambil data link yang berhubungan dengan profil tersebut
+        console.log(`[LOG] Profil ditemukan, ID: ${profile.id}. Mengambil links...`);
+
+        // 2. Ambil data link
         const { data: links, error: linksError } = await supabase
             .from('links')
             .select('title, url')
             .eq('profile_id', profile.id);
 
         if (linksError) {
+            console.error('[ERROR] Kesalahan saat query links:', linksError);
             return res.status(500).json({ message: "Gagal mengambil data link", error: linksError });
         }
 
-        // 3. Gabungkan data dan kirim sebagai respons
+        console.log(`[LOG] Berhasil mengambil ${links.length} link.`);
+
+        // 3. Gabungkan data dan kirim
         const responseData = {
             ...profile,
             links: links
         };
-
         res.json(responseData);
 
     } catch (error) {
-        res.status(500).json({ message: "Terjadi kesalahan pada server", error });
+        // Menangkap error tak terduga lainnya
+        console.error('[FATAL ERROR] Terjadi kesalahan tak terduga pada endpoint:', error);
+        res.status(500).json({ message: "Terjadi kesalahan fatal pada server", error: error.message });
     }
 });
 
