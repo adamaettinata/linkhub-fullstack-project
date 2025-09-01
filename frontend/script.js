@@ -30,7 +30,7 @@ function buildPage(data) {
         a.href = link.url;
         a.textContent = link.title;
         a.target = '_blank';
-        a.className = 'link-button';
+        a.className = 'block bg-gray-700 p-4 rounded-lg font-bold transition-transform duration-200 hover:scale-105 hover:bg-blue-600';
         linksSection.appendChild(a);
     });
 }
