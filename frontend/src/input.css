@@ -4,18 +4,26 @@
 @tailwind components;
 @tailwind utilities;
 
-/* -- 1. Latar Belakang "Aurora" Interaktif -- */
 @layer base {
   body {
     @apply bg-gray-900 text-gray-200;
-    background-color: #111827;
-    background-image: radial-gradient(circle at center, rgba(110, 231, 255, 0.05), transparent 40%),
-                      radial-gradient(at var(--x) var(--y), rgba(56, 189, 248, 0.25) 0%, rgba(56, 189, 248, 0) 25%);
-    transition: background-position 0.2s ease-out;
+    /* Tambahkan ini agar pseudo-element bekerja dengan benar */
+    position: relative;
+  }
+  
+  /* Overlay gelap untuk video background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(18, 24, 40, 0.7); /* Atur kegelapan di sini */
+    z-index: -1;
   }
 }
 
-/* -- 2. Tombol Link Interaktif -- */
 @layer components {
   .link-button {
     @apply block w-full p-4 rounded-lg font-bold text-center text-gray-100;
@@ -27,4 +35,15 @@
     @apply scale-105 shadow-lg shadow-cyan-500/20;
     background-position: right center;
   }
+}
+
+/* Style untuk video background */
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -2;
 }

@@ -451,10 +451,22 @@ body {
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(229 231 235 / var(--tw-text-opacity));
-  background-color: #111827;
-  background-image: radial-gradient(circle at center, rgba(110, 231, 255, 0.05), transparent 40%),
-                      radial-gradient(at var(--x) var(--y), rgba(56, 189, 248, 0.25) 0%, rgba(56, 189, 248, 0) 25%);
-  transition: background-position 0.2s ease-out;
+  /* Tambahkan ini agar pseudo-element bekerja dengan benar */
+  position: relative;
+}
+
+/* Overlay gelap untuk video background */
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(18, 24, 40, 0.7);
+  /* Atur kegelapan di sini */
+  z-index: -1;
 }
 
 *, ::before, ::after {
@@ -786,6 +798,15 @@ body {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
-/* -- 1. Latar Belakang "Aurora" Interaktif -- */
+/* Style untuk video background */
 
-/* -- 2. Tombol Link Interaktif -- */
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: -2;
+}
