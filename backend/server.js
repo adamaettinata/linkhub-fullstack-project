@@ -5,10 +5,16 @@ const { createClient } = require('@supabase/supabase-js'); // Import Supabase
 
 const app = express();
 
-console.log("--- MEMERIKSA KUNCI RAHASIA ---");
-console.log("SUPABASE_URL yang diterima:", process.env.SUPABASE_URL ? "ADA" : "TIDAK ADA / KOSONG");
-console.log("SUPABASE_KEY yang diterima:", process.env.SUPABASE_KEY ? "ADA" : "TIDAK ADA / KOSONG");
-console.log("---------------------------------");
+console.log("--- MEMERIKSA KUNCI RAHASIA (DEBUGGING DETAIL) ---");
+const urlValue = process.env.SUPABASE_URL;
+const keyValue = process.env.SUPABASE_KEY;
+
+console.log("Tipe data SUPABASE_URL:", typeof urlValue);
+console.log("Nilai SUPABASE_URL (20 karakter pertama):", urlValue ? urlValue.substring(0, 20) + '...' : "TIDAK DITEMUKAN / KOSONG");
+
+console.log("Tipe data SUPABASE_KEY:", typeof keyValue);
+console.log("Nilai SUPABASE_KEY (10 karakter pertama):", keyValue ? keyValue.substring(0, 10) + '...' : "TIDAK DITEMUKAN / KOSONG");
+console.log("-------------------------------------------------");
 
 const PORT = process.env.PORT || 3000;
 
