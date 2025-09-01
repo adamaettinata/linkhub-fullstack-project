@@ -4,38 +4,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/* -- 1. Tambahkan ini untuk Latar Belakang Gradasi Bergerak -- */
+/* -- 1. Latar Belakang "Aurora" Interaktif -- */
 @layer base {
-    body {
-        @apply bg-gray-900;
-        background-image: linear-gradient(45deg, #1a202c, #2d3748, #4a5568, #2c5282);
-        background-size: 400% 400%;
-        animation: gradient 15s ease infinite;
-    }
+  body {
+    @apply bg-gray-900 text-gray-200;
+    background-color: #111827;
+    background-image: radial-gradient(circle at center, rgba(110, 231, 255, 0.05), transparent 40%),
+                      radial-gradient(at var(--x) var(--y), rgba(56, 189, 248, 0.25) 0%, rgba(56, 189, 248, 0) 25%);
+    transition: background-position 0.2s ease-out;
+  }
 }
 
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* -- 2. Tambahkan ini untuk Tombol Link Interaktif -- */
+/* -- 2. Tombol Link Interaktif -- */
 @layer components {
-    .link-button {
-        @apply block w-full p-4 rounded-lg font-bold text-center transition-all duration-300;
-        background-image: linear-gradient(to right, #374151, #4b5563, #6b7280);
-        background-size: 200% auto;
-        transition: background-position 0.5s, transform 0.3s, box-shadow 0.3s;
-    }
-    .link-button:hover {
-        @apply scale-105 shadow-lg shadow-cyan-500/20;
-        background-position: right center; /* Pindahkan posisi gradasi saat hover */
-    }
+  .link-button {
+    @apply block w-full p-4 rounded-lg font-bold text-center text-gray-100;
+    background-image: linear-gradient(to right, #374151, #4b5563, #6b7280);
+    background-size: 200% auto;
+    transition: background-position 0.5s, transform 0.3s, box-shadow 0.3s;
+  }
+  .link-button:hover {
+    @apply scale-105 shadow-lg shadow-cyan-500/20;
+    background-position: right center;
+  }
 }

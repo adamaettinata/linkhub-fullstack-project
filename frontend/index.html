@@ -8,26 +8,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
-</head>
-<body class="bg-primary text-text-main flex justify-center items-center min-h-screen font-sans p-4">
 
-    <main class="w-full max-w-2xl mx-auto text-center">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body class="flex justify-center items-center min-h-screen font-sans p-4 overflow-hidden">
+
+    <main class="w-full max-w-2xl mx-auto text-center bg-gray-800/40 backdrop-blur-lg p-8 rounded-2xl border border-gray-700/60">
         
-        <header class="flex flex-col items-center mb-10 opacity-0 animate-fade-in-up" style="animation-delay: 100ms;">
+        <header class="flex flex-col items-center mb-10">
             <div class="p-1 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500">
-                <img src="profile_picture.png" alt="Foto Profil" id="profile-img" class="w-32 h-32 rounded-full object-cover border-4 border-secondary">
+                <img src="profile_picture.png" alt="Foto Profil" id="profile-img" class="w-32 h-32 rounded-full object-cover border-4 border-gray-800">
             </div>
-            <h1 id="profile-name" class="text-4xl font-bold mt-4"></h1>
-            <p id="profile-bio" class="text-lg text-text-sub mt-1"></p>
+            <h1 id="profile-name" class="text-4xl font-bold mt-4 text-gray-100"></h1>
+            <p id="profile-bio" class="text-lg text-gray-300 mt-1"></p>
         </header>
 
-        <section class="links-section flex flex-col gap-4 opacity-0 animate-fade-in-up" style="animation-delay: 300ms;">
-        </section>
+        <section class="links-section flex flex-col gap-4">
+            </section>
 
-        <footer class="mt-12 opacity-0 animate-fade-in-up" style="animation-delay: 500ms;">
-            <p class="text-sm text-text-sub">2025 by adamaettianata reserved.</p>
+        <footer class="mt-12">
+            <p class="text-sm text-gray-400">2025 by adamaettianata reserved.</p>
         </footer>
+
     </main>
+
     <script src="script.js"></script>
 </body>
 </html>
