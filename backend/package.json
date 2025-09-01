@@ -19,7 +19,5 @@
     "dotenv": "^17.2.1",
     "express": "^4.19.2"
   },
-  "devDependencies": {
-    
-  }
+  "devDependencies": {}
 }
