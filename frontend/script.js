@@ -1,4 +1,5 @@
-const apiUrl = 'http://localhost:3000/api/user/Faisal Adama';
+const userName = "Faisal Adama";
+const apiUrl = `http://localhost:3000/api/user/${encodeURIComponent(userName)}`;
 
 fetch(apiUrl)
     .then(response => {
