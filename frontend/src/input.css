@@ -1,4 +1,4 @@
-/* File: input.css */
+/* File: style.css */
 
 @tailwind base;
 @tailwind components;
@@ -7,8 +7,10 @@
 @layer base {
   body {
     @apply bg-gray-900 text-gray-200;
-    /* Tambahkan ini agar pseudo-element bekerja dengan benar */
     position: relative;
+    /* Variabel CSS untuk posisi mouse, akan diupdate oleh JS */
+    --x: 50%;
+    --y: 50%;
   }
   
   /* Overlay gelap untuk video background */
@@ -21,6 +23,24 @@
     height: 100%;
     background-color: rgba(18, 24, 40, 0.7); /* Atur kegelapan di sini */
     z-index: -1;
+  }
+
+  /* Efek Aurora Spotlight yang mengikuti mouse */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at var(--x) var(--y),
+      rgba(0, 255, 255, 0.08),
+      rgba(0, 100, 255, 0.04),
+      transparent 30%
+    );
+    z-index: -1;
+    pointer-events: none; /* Pastikan overlay tidak mengganggu interaksi mouse */
   }
 }
 

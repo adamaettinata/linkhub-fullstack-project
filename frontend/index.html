@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faisal Adama - LinkHub</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    
     <link href="./style.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex justify-center items-center min-h-screen font-sans p-4 overflow-hidden">
 
@@ -21,21 +25,24 @@
         
         <header class="flex flex-col items-center mb-10">
             <div class="p-1 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500">
-                <img src="profile_picture.png" alt="Foto Profil" id="profile-img" class="w-32 h-32 rounded-full object-cover border-4 border-gray-800">
+                <img src="" alt="Foto Profil" id="profile-img" class="w-32 h-32 rounded-full object-cover border-4 border-gray-800 opacity-0">
             </div>
             <h1 id="profile-name" class="text-4xl font-bold mt-4 text-gray-100"></h1>
             <p id="profile-bio" class="text-lg text-gray-300 mt-1"></p>
+            <div id="social-icons" class="flex gap-6 mt-6 text-2xl">
+                </div>
         </header>
 
-        <section class="links-section flex flex-col gap-4">
+        <section id="links-section" class="flex flex-col gap-4">
             </section>
 
         <footer class="mt-12">
-            <p class="text-sm text-gray-400">2025 by adamaettianata reserved.</p>
+            <p id="footer-text" class="text-sm text-gray-400"></p>
         </footer>
 
     </main>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

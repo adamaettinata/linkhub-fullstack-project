@@ -1,4 +1,4 @@
-/* File: input.css */
+/* File: style.css */
 
 /* ! tailwindcss v3.4.4 | MIT License | https://tailwindcss.com */
 
@@ -451,8 +451,10 @@ body {
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(229 231 235 / var(--tw-text-opacity));
-  /* Tambahkan ini agar pseudo-element bekerja dengan benar */
   position: relative;
+  /* Variabel CSS untuk posisi mouse, akan diupdate oleh JS */
+  --x: 50%;
+  --y: 50%;
 }
 
 /* Overlay gelap untuk video background */
@@ -467,6 +469,26 @@ body::before {
   background-color: rgba(18, 24, 40, 0.7);
   /* Atur kegelapan di sini */
   z-index: -1;
+}
+
+/* Efek Aurora Spotlight yang mengikuti mouse */
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at var(--x) var(--y),
+      rgba(0, 255, 255, 0.08),
+      rgba(0, 100, 255, 0.04),
+      transparent 30%
+    );
+  z-index: -1;
+  pointer-events: none;
+  /* Pastikan overlay tidak mengganggu interaksi mouse */
 }
 
 *, ::before, ::after {
@@ -620,8 +642,24 @@ body::before {
   margin-top: 3rem;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+.mt-0 {
+  margin-top: 0px;
 }
 
 .flex {
@@ -666,6 +704,10 @@ body::before {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
 }
 
 .overflow-hidden {
@@ -788,10 +830,24 @@ body::before {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.opacity-0 {
+  opacity: 0;
+}
+
 .backdrop-blur-lg {
   --tw-backdrop-blur: blur(16px);
   -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
           backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
 }
 
 .ease-out {
@@ -809,4 +865,9 @@ body::before {
   -o-object-fit: cover;
      object-fit: cover;
   z-index: -2;
+}
+
+.hover\:text-cyan-400:hover {
+  --tw-text-opacity: 1;
+  color: rgb(34 211 238 / var(--tw-text-opacity));
 }
